@@ -4,20 +4,70 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.uix.boxlayout import BoxLayout
+from pathlib import Path
+from dotenv import load_dotenv
 
 import pandas as pd
 import os
+import sys
 
-STATISTICS_PATH = "statistics.csv"
+load_dotenv()
 
 
 class Statistics:
-    day_of_the_week = int
-    mood = int
-    motivation = int
-    fatigue = int
-    anxiety = int
-    happiness = int
+    def __init__(self) -> None:
+        self.day_of_the_week: int
+        self.mood: int
+        self.motivation: int
+        self.fatigue: int
+        self.anxiety: int
+        self.happiness: int
+
+    def to_dict(self):
+        return {
+            "Day of the week": self.day_of_the_week,
+            "Mood": self.mood,
+            "Motivation": self.motivation,
+            "Fatigue": self.fatigue,
+            "Anxiety": self.anxiety,
+            "Happiness": self.happiness,
+        }
+
+
+def required(var: str) -> str:
+    try:
+        return str(os.getenv("STATISTICS_PATH"))
+    except ValueError:
+        print(f"The env variables is not set: {var}")
+        sys.exit(1)
+
+
+def save_statistics(statistics: Statistics):
+    if not os.path.exists(STATISTICS_PATH):
+        create_dataframe_file()
+    df = pd.read_csv(STATISTICS_PATH)
+    df.loc[len(df)] = statistics.to_dict()
+    df.to_csv(STATISTICS_PATH, index=False)
+
+
+def create_dataframe_file():
+    columns = [
+        "Day of the week",
+        "Mood",
+        "Motivation",
+        "Fatigue",
+        "Anxiety",
+        "Happiness",
+    ]
+    new_df = pd.DataFrame(columns=columns)
+    new_df.to_csv(STATISTICS_PATH)
+
+
+STATISTICS_PATH = Path(required("STATISTICS_PATH")).expanduser()
+
+STATISTICS_PATH.parent.mkdir(exist_ok=True, parents=True)
+if not os.path.exists(STATISTICS_PATH):
+    create_dataframe_file()
 
 
 class Application(App):
@@ -205,35 +255,6 @@ class ResultScreen(Screen):
         super(ResultScreen, self).__init__(**kwargs)
         self.label = Label(text=f"Спасибо, данные сохранены в {STATISTICS_PATH}")
         self.add_widget(self.label)
-
-
-def save_statistics(statistics: Statistics):
-    if not os.path.exists(STATISTICS_PATH):
-        create_dataframe_file()
-    df = pd.read_csv(STATISTICS_PATH)
-    new_values = {
-        "Day of the week": statistics.day_of_the_week,
-        "Mood": statistics.mood,
-        "Motivation": statistics.motivation,
-        "Fatigue": statistics.fatigue,
-        "Anxiety": statistics.anxiety,
-        "Happiness": statistics.happiness,
-    }
-    df.loc[len(df)] = new_values
-    df.to_csv(STATISTICS_PATH, index=False)
-
-
-def create_dataframe_file():
-    columns = [
-        "Day of the week",
-        "Mood",
-        "Motivation",
-        "Fatigue",
-        "Anxiety",
-        "Happiness",
-    ]
-    new_df = pd.DataFrame(columns=columns)
-    new_df.to_csv(STATISTICS_PATH)
 
 
 if __name__ == "__main__":
