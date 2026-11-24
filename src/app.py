@@ -116,7 +116,7 @@ class DayInputScreen(Screen):
 class MoodInputScreen(Screen):
     def __init__(self, **kwargs):
         super(MoodInputScreen, self).__init__(**kwargs)
-        self.label = Label(text="Введите вашe текущуу настроение:")
+        self.label = Label(text="Введите вашe текущee настроение:")
         self.input = TextInput(hint_text="1 - очень плохое, 10 - очень хорошо.")
         self.button = Button(text="Ввод", on_press=self.on_next)
         self.form = BoxLayout(
