@@ -14,6 +14,6 @@ How to run:
   - Then run ```just run``` inside your venv
 
 Usage case:
-  You might want to realize how changes your mood during the days, what affects it, so that application does exactly that, pass questions during one month at least and then analyse resulting .csv data with pandas in python or other tool.
+  You might want to realize how changes your mood during the days, what affects it, so this application does exactly that, pass questions during one month at least and then analyse resulting .csv data with pandas in python or other tool.
 
 
