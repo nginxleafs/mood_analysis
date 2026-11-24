@@ -1,11 +1,24 @@
 import pandas as pd
 import os
+import sys
 from pathlib import Path
+from dotenv import load_dotenv
 
-DATAFRAME_PATH = Path("~/Documents/mood_analysis/statistics.csv").expanduser()
-DATAFRAME_PATH.parent.mkdir(parents=True, exist_ok=True)
+load_dotenv()
 
-if not os.path.exists(DATAFRAME_PATH):
+
+def required(var: str):
+    try:
+        return str(os.getenv(var))
+    except ValueError:
+        print(".env variable should be set: ", var)
+        sys.exit(1)
+
+
+STATISTICS_PATH = Path(required("STATISTICS_PATH")).expanduser()
+STATISTICS_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+if not os.path.exists(STATISTICS_PATH):
     columns = [
         "Day of the week",
         "Mood",
@@ -15,9 +28,9 @@ if not os.path.exists(DATAFRAME_PATH):
         "Happiness",
     ]
     new_df = pd.DataFrame(columns=columns)
-    new_df.to_csv(DATAFRAME_PATH)
+    new_df.to_csv(STATISTICS_PATH)
 
-df = pd.read_csv(DATAFRAME_PATH)
+df = pd.read_csv(STATISTICS_PATH)
 
 while True:
     day_of_the_week = input(
@@ -106,4 +119,4 @@ new_row = {
 }
 
 df.loc[len(df)] = new_row
-df.to_csv(DATAFRAME_PATH, index=False)
+df.to_csv(STATISTICS_PATH, index=False)
