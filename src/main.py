@@ -33,80 +33,78 @@ if not os.path.exists(STATISTICS_PATH):
 df = pd.read_csv(STATISTICS_PATH)
 
 while True:
-    day_of_the_week = input(
-        "Введите день недели, где 1 - понедельник, а 7 - воскресение: "
-    )
+    day_of_the_week = input("Enter day of the week, where 1 - monday , а 7 - sunday: ")
     try:
         day_of_the_week = int(day_of_the_week)
     except ValueError:
-        print("День недели должен быть указан одной цифрой.")
+        print("Day of the week has to be a number.")
         continue
     if 1 <= day_of_the_week <= 7:
         break
     else:
-        print("День должен быть указан в диапазоне 1 и 7.")
+        print("Day has to be inputed in diapazone in range 1 and 7.")
 
 while True:
-    mood = input("Укажите уровень вашего настроения от 0 до 10: ")
+    mood = input("Enter your mood level, from 1 to 10: ")
     try:
         mood = int(mood)
     except ValueError:
-        print("Настроение должно быть указано цифрой, по шкале от 1 до 10.")
+        print("Mood has to be inputed as a number.")
         continue
     if 1 <= mood <= 10:
         break
     else:
-        print("Настроение должно быть указано в диапазоне 1 и 10.")
+        print("Mood has to be in range 1 and 10.")
 
 
 while True:
-    motivation = input("Укажите уровень вашей мотивации от 0 до 10: ")
+    motivation = input("Enter your motivation level, from 1 to 10: ")
     try:
         motivation = int(motivation)
     except ValueError:
-        print("Мотивация должна быть указанa цифрой, по шкале от 1 до 10.")
+        print("Motivation has to inputed as a number.")
         continue
     if 1 <= motivation <= 10:
         break
     else:
-        print("Мотивация должна быть указанa в диапазоне 1 и 10.")
+        print("Motivation has to be in range 1 and 10.")
 
 while True:
-    fatigue = input("Укажите уровень вашей усталости от 0 до 10: ")
+    fatigue = input("Enter you fatigue level, from 1 to 10: ")
     try:
         fatigue = int(fatigue)
     except ValueError:
-        print("Усталость должна быть указанa цифрой, по шкале от 1 до 10.")
+        print("Fatigue has to be inputed as a number.")
         continue
     if 1 <= fatigue <= 10:
         break
     else:
-        print("Усталость должна быть указанa в диапазоне 1 и 10.")
+        print("Fatigue has to be in range 1 and 10.")
 
 
 while True:
-    anxiety = input("Укажите уровень вашей раздраженности от 0 до 10: ")
+    anxiety = input("Enter you anxiety level, from 1 to 10: ")
     try:
         anxiety = int(anxiety)
     except ValueError:
-        print("Раздраженность должна быть указанa цифрой, по шкале от 1 до 10.")
+        print("Anxiety has to be inputed as a number.")
         continue
     if 1 <= anxiety <= 10:
         break
     else:
-        print("Раздраженность должна быть указанa в диапазоне 1 и 10.")
+        print("Anxiety has to be in range 1 and 10.")
 
 while True:
-    happiness = input("Укажите уровень вашего счастья от 0 до 10: ")
+    happiness = input("Enter you happiness level, from 1 to 10: ")
     try:
         happiness = int(happiness)
     except ValueError:
-        print("Уровень счастья должен быть указан цифрой, по шкале от 1 до 10.")
+        print("Happiness level has to be inputed as a number.")
         continue
     if 1 <= happiness <= 10:
         break
     else:
-        print("Уровень счастья должен быть указан в диапазоне 1 и 10.")
+        print("Happiness level has to be in range 1 and 10.")
 
 
 new_row = {

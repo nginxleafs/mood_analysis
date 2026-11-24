@@ -88,10 +88,10 @@ class DayInputScreen(Screen):
     def __init__(self, **kwargs):
         super(DayInputScreen, self).__init__(**kwargs)
         self.label = Label(
-            text="Введите день недели, где 1 - понедельник, 7 - воскресенье:",
+            text="Enter day of the week, where 1 - monday , а 7 - sunday: ",
         )
-        self.input = TextInput(hint_text="1 до 7.", multiline=False)
-        self.button = Button(text="Ввод", on_press=self.on_next)
+        self.input = TextInput(hint_text="In range 1 and 10", multiline=False)
+        self.button = Button(text="Enter", on_press=self.on_next)
         self.form = BoxLayout(
             orientation="vertical",
             size_hint=(None, None),
@@ -116,9 +116,9 @@ class DayInputScreen(Screen):
 class MoodInputScreen(Screen):
     def __init__(self, **kwargs):
         super(MoodInputScreen, self).__init__(**kwargs)
-        self.label = Label(text="Введите вашe текущee настроение:")
-        self.input = TextInput(hint_text="1 - очень плохое, 10 - очень хорошо.")
-        self.button = Button(text="Ввод", on_press=self.on_next)
+        self.label = Label(text="Enter your mood level, from 1 to 10: ")
+        self.input = TextInput(hint_text="In range 1 to 10")
+        self.button = Button(text="Enter", on_press=self.on_next)
         self.form = BoxLayout(
             orientation="vertical",
             size_hint=(None, None),
@@ -143,9 +143,9 @@ class MoodInputScreen(Screen):
 class MotivationInputScreen(Screen):
     def __init__(self, **kwargs):
         super(MotivationInputScreen, self).__init__(**kwargs)
-        self.label = Label(text="Введите вашу текущую мотивацию:")
-        self.input = TextInput(hint_text="1 - очень низкая, 10 - очень высокая.")
-        self.button = Button(text="Ввод", on_press=self.on_next)
+        self.label = Label(text="Enter your motivation level, from 1 to 10: ")
+        self.input = TextInput(hint_text="1 - low, 10 - high")
+        self.button = Button(text="Enter", on_press=self.on_next)
         self.form = BoxLayout(
             orientation="vertical",
             size_hint=(None, None),
@@ -170,9 +170,9 @@ class MotivationInputScreen(Screen):
 class FatigueInputScreen(Screen):
     def __init__(self, **kwargs):
         super(FatigueInputScreen, self).__init__(**kwargs)
-        self.label = Label(text="Введите вашу текущую усталость:")
-        self.input = TextInput(hint_text="1 - очень низкая, 10 - очень высокая.")
-        self.button = Button(text="Ввод", on_press=self.on_next)
+        self.label = Label(text="Enter your current fatigue level, from 1 to 10: ")
+        self.input = TextInput(hint_text="1 - low, 10 - high")
+        self.button = Button(text="Enter", on_press=self.on_next)
         self.form = BoxLayout(
             orientation="vertical",
             size_hint=(None, None),
@@ -197,9 +197,9 @@ class FatigueInputScreen(Screen):
 class AnxietyInputScreen(Screen):
     def __init__(self, **kwargs):
         super(AnxietyInputScreen, self).__init__(**kwargs)
-        self.label = Label(text="Введите вашу текущую раздражённость: ")
-        self.input = TextInput(hint_text="1 - очень низкая, 10 - очень высокая.")
-        self.button = Button(text="Ввод", on_press=self.on_next)
+        self.label = Label(text="Enter your current anxiety level, from 1 to 10: ")
+        self.input = TextInput(hint_text="1 - low, 10 - high")
+        self.button = Button(text="Enter", on_press=self.on_next)
         self.form = BoxLayout(
             orientation="vertical",
             size_hint=(None, None),
@@ -224,9 +224,9 @@ class AnxietyInputScreen(Screen):
 class HappinessInputScreen(Screen):
     def __init__(self, **kwargs):
         super(HappinessInputScreen, self).__init__(**kwargs)
-        self.label = Label(text="Введите ваш уровень счастья: ")
-        self.input = TextInput(hint_text="1 - очень низкий, 10 - очень высокий.")
-        self.button = Button(text="Ввод", on_press=self.on_next)
+        self.label = Label(text="Enter your current happiness level, from 1 to 10: ")
+        self.input = TextInput(hint_text="1 - low, 10 - high")
+        self.button = Button(text="Enter", on_press=self.on_next)
         self.form = BoxLayout(
             orientation="vertical",
             size_hint=(None, None),
@@ -253,7 +253,7 @@ class HappinessInputScreen(Screen):
 class ResultScreen(Screen):
     def __init__(self, **kwargs):
         super(ResultScreen, self).__init__(**kwargs)
-        self.label = Label(text=f"Спасибо, данные сохранены в {STATISTICS_PATH}")
+        self.label = Label(text=f"Thanks, your data saved to {STATISTICS_PATH}")
         self.add_widget(self.label)
 
 
